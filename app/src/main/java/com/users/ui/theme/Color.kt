@@ -1,4 +1,4 @@
-package com.lydiatest.ui.theme
+package com.users.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
