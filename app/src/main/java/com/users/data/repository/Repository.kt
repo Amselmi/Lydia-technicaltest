@@ -1,9 +1,12 @@
 package com.users.data.repository
 
-import com.users.data.model.UsersData
+import androidx.paging.PagingData
+import com.users.data.db.UserEntity
+import kotlinx.coroutines.flow.Flow
 
 interface Repository {
+    suspend fun getUsers(): Flow<PagingData<UserEntity>>
 
-    suspend fun getUsers(page: Int): UsersData?
+    suspend fun getUserByUserId(userId:String): UserEntity?
 
 }

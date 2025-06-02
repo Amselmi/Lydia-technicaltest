@@ -1,4 +1,4 @@
-package com.users.data.remote
+package com.users.data.api
 
 import com.users.data.Endpoints
 import com.users.data.model.UsersData

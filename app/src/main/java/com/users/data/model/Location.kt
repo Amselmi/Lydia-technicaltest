@@ -11,7 +11,7 @@ data class Location(
     @SerializedName("country")
     val country: String? = null,
     @SerializedName("postcode")
-    val postcode: Int? = null,
+    val postcode: Any? = null,
     @SerializedName("state")
     val state: String? = null,
     @SerializedName("street")

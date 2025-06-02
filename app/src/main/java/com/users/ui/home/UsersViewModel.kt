@@ -1,41 +1,42 @@
 package com.users.ui.home
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.users.common.UiState
-import com.users.domain.GetUsersUseCase
+import androidx.paging.PagingData.Companion.empty
+import androidx.paging.cachedIn
+import com.users.domain.usesCase.GetUsersUseCase
+import com.users.ui.common.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class UsersViewModel @Inject constructor(
-    private val getUsersUseCase:GetUsersUseCase
-) : ViewModel() {
-
-    fun getUsers(page: Int) {
-
-        viewModelScope.launch {
-        getUsersUseCase.invoke(page).onEach {
-            when (it) {
-                is UiState.Loading -> {
-                    Log.e("Loading", "Loading")
-                }
-
-                is UiState.Success -> {
-
-                    Log.e("Success", "" + it.data)
-
-                }
-
-                is UiState.Error -> {
-                    Log.e("Error", "" + it.message)
-
-                }
-            }
-        }.launchIn(viewModelScope)
+    private val getUsersUseCase: GetUsersUseCase
+) : BaseViewModel<UsersContract.Event, UsersContract.State, UsersContract.Action>() {
+    init {
+        setEvent(UsersContract.Event.GetUsers)
     }
-}}
+
+    private fun getUsers() {
+        viewModelScope.launch(Default) {
+            getUsersUseCase.execute(Unit)
+                .distinctUntilChanged()
+                .cachedIn(viewModelScope)
+                .collect { result ->
+                    setState { copy(users = result) }
+                }
+        }
+    }
+
+    override fun setInitialState() = UsersContract.State(
+        empty()
+    )
+
+    override fun handleEvents(event: UsersContract.Event) {
+        when (event) {
+            UsersContract.Event.GetUsers -> getUsers()
+        }
+    }
+}

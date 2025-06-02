@@ -7,5 +7,5 @@ data class UsersData(
     @SerializedName("info")
     val info: Info? = null,
     @SerializedName("results")
-    val results: List<Result?>? = null
+    val resultData: List<ResultData?>? = null
 )

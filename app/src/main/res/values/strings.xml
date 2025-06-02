@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Lydia Test</string>
+    <string name="app_name">Lydia Technical Test</string>
+    <string name="get_data_from_server">Récupération des données du serveur</string>
+    <string name="default_server_error">Une erreur serveur est survenue.Veuillez réessayer ultérieurement.</string>
+
+    <string name="retry">Réessayer</string>
+
+
 </resources>

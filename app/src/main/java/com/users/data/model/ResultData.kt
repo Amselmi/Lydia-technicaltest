@@ -3,7 +3,7 @@ package com.users.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Result(
+data class ResultData(
     @SerializedName("cell")
     val cell: String? = null,
     @SerializedName("dob")
