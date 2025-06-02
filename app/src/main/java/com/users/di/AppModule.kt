@@ -3,9 +3,9 @@ package com.users.di
 import android.content.Context
 import androidx.room.Room
 import com.users.data.Endpoints.BASE_URL
-import com.users.data.db.UsersDatabase
-import com.users.data.api.UsersApi
-import com.users.data.repository.Repository
+import com.users.data.local.UsersDatabase
+import com.users.data.remote.UsersApi
+import com.users.domain.repository.Repository
 import com.users.data.repository.RepositoryImpl
 import dagger.Module
 import dagger.Provides

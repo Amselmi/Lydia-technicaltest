@@ -1,7 +1,7 @@
 package com.users.ui.home
 
 import androidx.paging.PagingData
-import com.users.data.db.UserEntity
+import com.users.domain.model.User
 import com.users.ui.common.ViewAction
 import com.users.ui.common.ViewEvent
 import com.users.ui.common.ViewState
@@ -12,7 +12,7 @@ class UsersContract {
     }
 
     data class State(
-        val users: PagingData<UserEntity>
+        val users: PagingData<User>
     ) : ViewState
 
     sealed class Action : ViewAction {

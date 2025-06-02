@@ -28,11 +28,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
 import com.lydiatest.R
-import com.users.data.db.UserEntity
+import com.users.domain.model.User
 
 @Composable
 fun DetailUserScreen(
-    viewState: UserEntity?,
+    user: User,
     onNavigationRequested: (action: UserContract.Action) -> Unit
 ) {
     Scaffold(
@@ -56,7 +56,6 @@ fun DetailUserScreen(
                         modifier = Modifier.size(25.dp)
                     )
                 }
-
                 Text(
                     text = stringResource(id = R.string.app_name),
                     color = MaterialTheme.colorScheme.onPrimary,
@@ -65,81 +64,72 @@ fun DetailUserScreen(
                         .weight(1.0f),
                     textAlign = TextAlign.Center
                 )
-
-
             }
         }
-
     ) { innerPadding ->
-        viewState?.let { user ->
-
-            LazyColumn(
-                modifier = Modifier.padding(innerPadding)
-            ) {
-                item {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    ) {
-                        user.thumbnail?.let {
-                            Image(
-                                painter = rememberAsyncImagePainter(user.picture),
-                                contentDescription = null,
-                                contentScale = ContentScale.FillWidth,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(180.dp)
-                            )
-                        }
-
+        LazyColumn(
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            item {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    user.thumbnail?.let {
+                        Image(
+                            painter = rememberAsyncImagePainter(user.picture),
+                            contentDescription = null,
+                            contentScale = ContentScale.FillWidth,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(180.dp)
+                        )
                     }
                 }
-                item {
-                    Text(
-                        text = user.name,
-                        color = MaterialTheme.colorScheme.onBackground,
-                        style = MaterialTheme.typography.titleMedium,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp)
-                            .padding(top = 8.dp),
-                    )
-                }
-                item {
-                    Spacer(modifier = Modifier.padding(vertical = 4.dp))
-                }
-                item {
-                    Text(
-                        text = user.cell,
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp)
-                            .padding(bottom = 8.dp),
-                        color = MaterialTheme.colorScheme.onSurface
+            }
+            item {
+                Text(
+                    text = user.name,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                        .padding(top = 8.dp),
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            }
+            item {
+                Text(
+                    text = user.cell,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .padding(bottom = 8.dp),
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
+            item {
+                Text(
+                    text = user.mail,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .padding(bottom = 8.dp),
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
+            item {
+                Text(
+                    text = user.address,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .padding(bottom = 8.dp),
+                    color = MaterialTheme.colorScheme.onSurface
+                )
 
-                    )
-                }
-                item {
-                    Text(
-                        text = user.mail,
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp)
-                            .padding(bottom = 8.dp),
-                        color = MaterialTheme.colorScheme.onSurface
-
-                    )
-                }
-                item {
-                    Text(
-                        text = user.address,
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp)
-                            .padding(bottom = 8.dp),
-                        color = MaterialTheme.colorScheme.onSurface
-
-                    )
-                }
             }
         }
     }

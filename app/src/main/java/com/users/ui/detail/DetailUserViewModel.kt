@@ -1,6 +1,7 @@
 package com.users.ui.detail
 
 import androidx.lifecycle.viewModelScope
+import com.users.domain.model.User
 import com.users.domain.usesCase.GetUserByIdUseCase
 import com.users.ui.common.BaseViewModel
 import dagger.assisted.Assisted
@@ -33,7 +34,7 @@ class DetailUserViewModel @AssistedInject constructor(
         }
     }
 
-    override fun setInitialState() = UserContract.State(user = null)
+    override fun setInitialState() = UserContract.State(user = User(id = 1))
 
     override fun handleEvents(event: UserContract.Event) {
         when (event) {

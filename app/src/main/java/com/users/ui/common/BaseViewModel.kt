@@ -16,14 +16,15 @@ interface ViewState
 interface ViewAction
 
 
-abstract class BaseViewModel<Event: ViewEvent, UiState: ViewState, action: ViewAction> : ViewModel() {
+abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, action : ViewAction> :
+    ViewModel() {
 
     abstract fun setInitialState(): UiState
     abstract fun handleEvents(event: Event)
 
     private val initialState: UiState by lazy { setInitialState() }
 
-     val _viewState: MutableStateFlow<UiState> = MutableStateFlow(initialState)
+    val _viewState: MutableStateFlow<UiState> = MutableStateFlow(initialState)
     val viewState: StateFlow<UiState> = _viewState
 
     private val _event: MutableSharedFlow<Event> = MutableSharedFlow()

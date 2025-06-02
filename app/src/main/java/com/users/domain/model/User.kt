@@ -6,5 +6,7 @@ data class User(
     val cell: String = "",
     val mail: String = "",
     val thumbnail: String? = null,
-    val userId: String = ""
+    val userId: String = "",
+    val picture: String? = null,
+    val address: String = ""
 )

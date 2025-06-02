@@ -1,4 +1,4 @@
-package com.users.ui.home
+package com.users.ui.home.composables
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

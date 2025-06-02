@@ -1,6 +1,6 @@
 package com.users.ui.detail
 
-import com.users.data.db.UserEntity
+import com.users.domain.model.User
 import com.users.ui.common.ViewAction
 import com.users.ui.common.ViewEvent
 import com.users.ui.common.ViewState
@@ -11,7 +11,7 @@ class UserContract {
     }
 
     data class State(
-        val user: UserEntity?
+        val user: User
     ) : ViewState
 
     sealed class Action : ViewAction {

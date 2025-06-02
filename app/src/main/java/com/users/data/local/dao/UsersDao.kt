@@ -1,10 +1,11 @@
-package com.users.data.db
+package com.users.data.local.dao
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.users.data.local.model.UserEntity
 
 @Dao
 interface UsersDao {
@@ -19,5 +20,5 @@ interface UsersDao {
     suspend fun clearAll()
 
     @Query("SELECT * FROM userentity where userId IN (:userId)")
-    suspend fun getUser(userId: String):UserEntity?
+    suspend fun getUser(userId: String): UserEntity?
 }

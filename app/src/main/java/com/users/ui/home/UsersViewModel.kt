@@ -6,7 +6,7 @@ import androidx.paging.cachedIn
 import com.users.domain.usesCase.GetUsersUseCase
 import com.users.ui.common.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,9 +18,8 @@ class UsersViewModel @Inject constructor(
     init {
         setEvent(UsersContract.Event.GetUsers)
     }
-
     private fun getUsers() {
-        viewModelScope.launch(Default) {
+        viewModelScope.launch(IO) {
             getUsersUseCase.execute(Unit)
                 .distinctUntilChanged()
                 .cachedIn(viewModelScope)

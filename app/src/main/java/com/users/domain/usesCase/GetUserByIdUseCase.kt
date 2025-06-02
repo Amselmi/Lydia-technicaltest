@@ -1,14 +1,14 @@
 package com.users.domain.usesCase
 
-import com.users.data.db.UserEntity
-import com.users.data.repository.Repository
+import com.users.domain.repository.Repository
 import com.users.domain.common.UseCase
+import com.users.domain.model.User
 import javax.inject.Inject
 
 class GetUserByIdUseCase @Inject constructor(
     private val repository: Repository
-) : UseCase<String,UserEntity?> {
-    override suspend fun execute(input: String): UserEntity?{
+) : UseCase<String, User?> {
+    override suspend fun execute(input: String): User{
         return repository.getUserByUserId(input)
     }
 

@@ -1,23 +1,25 @@
 package com.users.data.mapper
 
-import com.users.data.db.UserEntity
+import com.users.data.local.model.UserEntity
 import com.users.data.model.ResultData
 import com.users.data.model.UsersData
 import com.users.domain.model.User
 
 object Mapper {
-    fun mapUser(userEntity: UserEntity) = User(
-        id = userEntity.id,
-        name = userEntity.name,
-        cell = userEntity.cell,
-        mail = userEntity.mail,
-        thumbnail = userEntity.thumbnail,
-        userId = userEntity.userId
+    fun mapUser(userEntity: UserEntity?) = User(
+        id = userEntity?.id ?: 1,
+        name = userEntity?.name ?: "",
+        cell = userEntity?.cell ?: "",
+        mail = userEntity?.mail ?: "",
+        thumbnail = userEntity?.thumbnail ?: "",
+        picture = userEntity?.picture ?: "",
+        address = userEntity?.address ?: "",
+        userId = userEntity?.userId ?: ""
     )
 
     fun mapUsersToEntity(usersData: UsersData?): List<UserEntity> {
-        var users = mutableListOf<UserEntity>()
-        var page = usersData?.info?.page ?: 1
+        val users = mutableListOf<UserEntity>()
+        val page = usersData?.info?.page ?: 1
         usersData?.resultData?.forEachIndexed { position, result ->
             users.add(
                 UserEntity(
@@ -29,23 +31,6 @@ object Mapper {
                     picture = result?.picture?.large,
                     address = getAddress(result),
                     userId = result?.login?.uuid ?: ""
-                )
-            )
-        }
-        return users.toList()
-    }
-
-    fun mapToUser(usersEntity: List<UserEntity>?): List<User> {
-        var users = mutableListOf<User>()
-        usersEntity?.forEach { result ->
-            users.add(
-                User(
-                    id = result.id,
-                    name = result.name,
-                    cell = result.cell,
-                    mail = result.mail,
-                    thumbnail = result.thumbnail,
-                    userId = result.userId ?: ""
                 )
             )
         }

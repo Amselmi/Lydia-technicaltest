@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -20,6 +21,10 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.lydiatest.R
+import com.users.ui.home.composables.ErrorMessage
+import com.users.ui.home.composables.ItemUser
+import com.users.ui.home.composables.Loader
+import com.users.ui.home.composables.LoadingNextPageItem
 import kotlinx.coroutines.flow.flowOf
 
 @Composable
@@ -29,6 +34,7 @@ fun UsersScreen(
 ) {
 
     val usersItems = flowOf(state.value.users).collectAsLazyPagingItems()
+    val listState = rememberLazyListState()
     Scaffold(
         topBar = {
             Row(
@@ -52,7 +58,8 @@ fun UsersScreen(
         }
     ) {
         LazyColumn(
-            modifier = Modifier.padding(it)
+            modifier = Modifier.padding(it),
+            state = listState
         ) {
             item { Spacer(modifier = Modifier.padding(4.dp)) }
             items(usersItems.itemCount) { index ->

@@ -1,4 +1,4 @@
-package com.users.ui.home
+package com.users.ui.home.composables
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -25,11 +25,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
-import com.users.data.db.UserEntity
+import com.users.domain.model.User
 
 @Composable
 fun ItemUser(
-    user: UserEntity,
+    user: User,
     onClick: () -> Unit
 ) {
     Card(
@@ -99,7 +99,8 @@ fun ItemUser(
 @Composable
 fun ItemUserPreview() {
     ItemUser(
-        UserEntity(id=1,
+        User(
+            id = 1,
             name = "Mr test test",
             thumbnail = "https://randomuser.me/api/portraits/thumb/women/27.jpg"
         )
