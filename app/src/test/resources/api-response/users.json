@@ -1,0 +1,66 @@
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": {
+        "title": "Mrs",
+        "first": "Frances",
+        "last": "Herrera"
+      },
+      "location": {
+        "street": {
+          "number": 5740,
+          "name": "W Dallas St"
+        },
+        "city": "Wollongong",
+        "state": "Australian Capital Territory",
+        "country": "Australia",
+        "postcode": "3018",
+        "coordinates": {
+          "latitude": "-83.6031",
+          "longitude": "18.6994"
+        },
+        "timezone": {
+          "offset": "+2:00",
+          "description": "Kaliningrad, South Africa"
+        }
+      },
+      "email": "frances.herrera@example.com",
+      "login": {
+        "uuid": "56989ef1-ee6a-4d6b-a20f-18b343213437",
+        "username": "yellowbutterfly577",
+        "password": "8989",
+        "salt": "3zM1zTzh",
+        "md5": "b0a240ad4aea0d1a4ef28339ed246c3f",
+        "sha1": "32c3d0001a4379945544c56a8ef92f98dd6891b4",
+        "sha256": "a5ed6f0b69b91ba8c444caf4b881f853fd5d36e6dfa68eddb11bebe21304b455"
+      },
+      "dob": {
+        "date": "1983-05-27T11:26:06.318Z",
+        "age": 42
+      },
+      "registered": {
+        "date": "2006-01-06T13:34:20.469Z",
+        "age": 19
+      },
+      "phone": "02-1122-1470",
+      "cell": "0444-339-924",
+      "id": {
+        "name": "TFN",
+        "value": "174195871"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/27.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/27.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/27.jpg"
+      },
+      "nat": "AU"
+    }
+  ],
+  "info": {
+    "seed": "lydia",
+    "results": 20,
+    "page": 1,
+    "version": "1.3"
+  }
+}

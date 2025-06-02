@@ -35,8 +35,7 @@ class RepositoryImpl @Inject constructor(
             .map { pagingData ->
                 pagingData.map {
                     mapUser(it)
-                }
-            }
+                } }
 
     }
     override suspend fun getUserByUserId(userId: String): User {

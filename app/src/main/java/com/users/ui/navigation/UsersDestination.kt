@@ -12,7 +12,7 @@ import com.users.ui.home.UsersViewModel
 fun UsersDestination(navController: NavController) {
     val viewModel = hiltViewModel<UsersViewModel>()
 
-     val users = viewModel.viewState.collectAsStateWithLifecycle()
+    val users = viewModel.viewState.collectAsStateWithLifecycle()
     UsersScreen(
         state = users,
         onNavigationRequested = {
